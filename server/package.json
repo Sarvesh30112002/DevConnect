@@ -1,0 +1,36 @@
+{
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "nanoid": "^3.1.30",
+    "next": "^13.4.13",
+    "nodemon": "^2.0.22",
+    "pg": "latest",
+    "pg-connection-string": "latest",
+    "prompt": "latest",
+    "sequelize": "^6.8.0",
+    "sequelize-cockroachdb": "^6.0.3",
+    "twilio": "^3.84.1"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "name": "DevConnect",
+  "version": "1.0.0",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": ""
+  },
+  "homepage": "",
+  "description": ""
+}
