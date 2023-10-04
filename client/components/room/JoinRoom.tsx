@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import {
 	Button,
 	Flex,
@@ -10,16 +11,10 @@ import {
 	Text,
 	useColorModeValue,
 } from "@chakra-ui/react";
-import { useState } from "react";
 import { ServerApi } from "../../utils/constants";
-import { useAuth0 } from "@auth0/auth0-react";
-
-import { SOCKET_IO } from "../../utils/constants";
 
 export default function JoinRoom(): JSX.Element {
-	const { user } = useAuth0();
-
-	const [email, setEmail] = useState(user.email);
+	const [email, setEmail] = useState("");
 	const [roomId, setRoomId] = useState("");
 	const [password, setPassword] = useState("");
 
@@ -30,10 +25,13 @@ export default function JoinRoom(): JSX.Element {
 			password: password,
 		})
 			.then((res) => {
+				// Handle successful join
+				console.log("Successfully joined room:", res.data);
 				location.replace(`/room/${roomId}`);
 			})
 			.catch((err) => {
-				// handle error
+				// Handle error
+				console.error("Error joining room:", err);
 			});
 	};
 
@@ -42,7 +40,8 @@ export default function JoinRoom(): JSX.Element {
 			minH={"50vh"}
 			align={"center"}
 			justify={"center"}
-			bg={useColorModeValue("gray.50", "gray.800")}>
+			bg={useColorModeValue("gray.50", "gray.800")}
+		>
 			<Stack
 				spacing={4}
 				w={"full"}
@@ -51,7 +50,8 @@ export default function JoinRoom(): JSX.Element {
 				rounded={"xl"}
 				boxShadow={"lg"}
 				p={6}
-				my={12}>
+				my={12}
+			>
 				<Heading lineHeight={1.1} fontSize={{ base: "2xl", md: "3xl" }}>
 					Join New Room
 				</Heading>
@@ -79,7 +79,8 @@ export default function JoinRoom(): JSX.Element {
 					<Text
 						fontSize={{ base: "sm", sm: "md" }}
 						color={useColorModeValue("gray.800", "gray.400")}
-						my="5">
+						my="5"
+					>
 						Ask from room host or{" "}
 						<Link color={"blue.400"} href="/createroom">
 							Make your own room
@@ -92,7 +93,8 @@ export default function JoinRoom(): JSX.Element {
 							color={"white"}
 							_hover={{
 								bg: "blue.500",
-							}}>
+							}}
+						>
 							Join Room
 						</Button>
 					</Stack>
@@ -100,9 +102,9 @@ export default function JoinRoom(): JSX.Element {
 			</Stack>
 			<Text
 				fontSize="17px"
-				position="absolute" // Set the text to absolute position within the parent
-				bottom="-160px" // Adjust the distance from the bottom
-				left="620px" // Adjust the distance from the left
+				position="absolute"
+				bottom="-160px"
+				left="620px"
 			>
 				Developed with 💖 by Sarvesh Hadole
 			</Text>
