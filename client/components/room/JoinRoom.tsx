@@ -14,13 +14,11 @@ import {
 import { ServerApi } from "../../utils/constants";
 
 export default function JoinRoom(): JSX.Element {
-	const [email, setEmail] = useState("");
 	const [roomId, setRoomId] = useState("");
 	const [password, setPassword] = useState("");
 
 	const formSubmitEventHandler = () => {
 		ServerApi.post("/api/joinRoom", {
-			email,
 			roomId,
 			password: password,
 		})
