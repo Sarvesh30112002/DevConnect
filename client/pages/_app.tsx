@@ -14,7 +14,7 @@ function MyApp({ Component, pageProps }) {
 			<Auth0Provider
 				domain="dev-qhuj8gzm.us.auth0.com"
 				clientId="sD56Sagz3xKzHwU1wWHz0dKi2gvBw4t5"
-				redirectUri="http://localhost:3000">
+				redirectUri="../components/LoadingPage.tsx">
 				<ChakraProvider theme={theme}>
 					<Component {...pageProps} />
 				</ChakraProvider>
